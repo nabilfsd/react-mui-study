@@ -1,34 +1,24 @@
-import HomePage from './Pages/Home';
-import ServicePage from './Pages/Service';
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-	Link
-} from 'react-router-dom';
+import ImageCard from "./components/ImageCard";
+import * as React from 'react';
+import HeaderSection from "./components/HeaderSection";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material";
+import theme from './utils/theme';
 
 
 function App() {
+
   return (
-    <Router>
-      <div className="App">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-
-          <li>
-            <Link to="/service">Service</Link>
-          </li>
-        </ul>
-
-        <Routes>
-          <Route exact path="/" element={<HomePage/>}></Route>
-          <Route exact path="/service" element={<ServicePage/>}></Route>
-        </Routes>
-      </div>
-    </Router>
-  );
+    <React.Fragment>
+      <CssBaseline></CssBaseline>
+      <ThemeProvider theme={theme}>
+        <div className="app">
+          <HeaderSection></HeaderSection>
+          <ImageCard></ImageCard>
+        </div>
+      </ThemeProvider>
+    </React.Fragment>
+    )
 }
 
 export default App;
