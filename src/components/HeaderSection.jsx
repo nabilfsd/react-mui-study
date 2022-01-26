@@ -24,6 +24,18 @@ const HeaderSection = () => {
     setOpen(false);
     console.log("drawer closed");
   };
+
+  const dismissDrawer = (open) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' sx={{ margin: "0px" }}>
@@ -56,15 +68,17 @@ const HeaderSection = () => {
         }}
         variant='temporary'
         open={open}
+        onClose={dismissDrawer(open)}
       >
         <Box>
           <IconButton
             size='large'
             edge='start'
-            color='inherit'
+            variant='outlined'
+            color='error'
             aria-label='menu'
-            sx={{ mr: 2 }}
             onClick={handleDrawerClose}
+            sx={{ ml: "15px", mt: 1 }}
           >
             <MenuIcon />
           </IconButton>
